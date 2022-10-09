@@ -26,7 +26,7 @@ final class ClassTypeReader implements TypeReaderInterface
             return true;
         }
 
-        if (\is_object($input) && \ReflectionClass::class === $input::class) {
+        if ($input instanceof \ReflectionClass) {
             return true;
         }
 
@@ -39,12 +39,8 @@ final class ClassTypeReader implements TypeReaderInterface
             $input = new \ReflectionClass($input);
         }
 
-        if (\is_object($input) && \class_exists($input::class) && \ReflectionClass::class !== $input::class) {
+        if (\is_object($input) && !($input instanceof \ReflectionClass)) {
             $input = new \ReflectionClass($input::class);
-        }
-
-        if (\ReflectionClass::class !== $input::class) {
-            throw new \RuntimeException('Invalid input for class type reader');
         }
 
         return $input->getAttributes();

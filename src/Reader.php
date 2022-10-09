@@ -40,6 +40,21 @@ final class Reader
         return $reader->readAttributes($input);
     }
 
+    public function getAttribute(
+        string|object $input,
+        string $attributeName,
+    ): ?\ReflectionAttribute {
+        $attributes = $this->getAttributes($input);
+
+        foreach ($attributes as $attribute) {
+            if ($attribute->getName() === $attributeName) {
+                return $attribute;
+            }
+        }
+
+        return null;
+    }
+
     private function getTypeReader(string|object $input): ?TypeReaderInterface
     {
         foreach ($this->typeReader as $reader) {

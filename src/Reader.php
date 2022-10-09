@@ -1,26 +1,37 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 ThemePoint
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace ThemePoint\Attribute;
 
 use ThemePoint\Attribute\Interfaces\TypeReaderInterface;
 use ThemePoint\Attribute\TypeReader\ClassTypeReader;
 
-class Reader
+final class Reader
 {
     private array $typeReader;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->typeReader = [
-            new ClassTypeReader()
+            new ClassTypeReader(),
         ];
     }
 
     public function getAttributes(
-        string|object $input
+        string|object $input,
     ): array {
         $reader = $this->getTypeReader($input);
 
-        if ($reader === null) {
+        if (null === $reader) {
             throw new \RuntimeException('No type reader found for input');
         }
 

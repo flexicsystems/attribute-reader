@@ -1,10 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 ThemePoint
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace ThemePoint\Attribute\TypeReader;
 
 use ThemePoint\Attribute\Interfaces\TypeReaderInterface;
 
-class ClassTypeReader implements TypeReaderInterface
+final class ClassTypeReader implements TypeReaderInterface
 {
     public function support(string|object $input): bool
     {
@@ -16,7 +26,7 @@ class ClassTypeReader implements TypeReaderInterface
             return true;
         }
 
-        if (\is_object($input) && $input::class === \ReflectionClass::class) {
+        if (\is_object($input) && \ReflectionClass::class === $input::class) {
             return true;
         }
 

@@ -22,7 +22,7 @@ final class ClassTypeReader implements TypeReaderInterface
             return true;
         }
 
-        if (\is_object($input) && \class_exists($input::class)) {
+        if (\is_object($input) && \class_exists($input::class) && !($input instanceof \Reflector)) {
             return true;
         }
 

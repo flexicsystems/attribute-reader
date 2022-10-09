@@ -1,5 +1,5 @@
 {
-  "name": "themepoint/attribute-reader",
+  "name": "flexic/attribute-reader",
   "type": "library",
   "description": "Provides an reader for php attributes.",
   "keywords": [
@@ -26,7 +26,7 @@
   },
   "autoload": {
     "psr-4": {
-      "ThemePoint\\Attributes\\": "src/"
+      "Flexic\\Attributes\\": "src/"
     }
   },
   "require-dev": {

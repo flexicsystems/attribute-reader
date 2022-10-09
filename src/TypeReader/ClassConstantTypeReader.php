@@ -14,11 +14,11 @@ namespace ThemePoint\Attributes\TypeReader;
 
 use ThemePoint\Attributes\Interfaces\TypeReaderInterface;
 
-final class PropertyTypeReader implements TypeReaderInterface
+final class ClassConstantTypeReader implements TypeReaderInterface
 {
     public function support(string|object $input): bool
     {
-        if ($input instanceof \ReflectionProperty) {
+        if ($input instanceof \ReflectionClassConstant) {
             return true;
         }
 
@@ -26,12 +26,12 @@ final class PropertyTypeReader implements TypeReaderInterface
     }
 
     /**
-     * @param \ReflectionProperty $input
+     * @param \ReflectionClassConstant $input
      */
     public function readAttributes(string|object $input): array
     {
-        if (\is_string($input) || !($input instanceof \ReflectionProperty)) {
-            throw new \RuntimeException('PropertyTypeReader does not support string input');
+        if (\is_string($input) || !($input instanceof \ReflectionClassConstant)) {
+            throw new \RuntimeException('ClassConstantTypeReader does not support string input');
         }
 
         return $input->getAttributes();

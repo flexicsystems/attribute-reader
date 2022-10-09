@@ -16,15 +16,11 @@ interface TypeReaderInterface
 {
     /**
      * Returns true if the reader can read the given type.
-     *
-     * @param string|object $input
      */
     public function support(string|object $input): bool;
 
     /**
      * Reads the attributes.
-     *
-     * @param string|object $input
      */
     public function readAttributes(string|object $input): array;
 }

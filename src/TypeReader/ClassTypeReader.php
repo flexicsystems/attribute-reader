@@ -43,7 +43,7 @@ final class ClassTypeReader implements TypeReaderInterface
             $input = new \ReflectionClass($input::class);
         }
 
-        if ($input::class !== \ReflectionClass::class) {
+        if (\ReflectionClass::class !== $input::class) {
             throw new \RuntimeException('Invalid input for class type reader');
         }
 

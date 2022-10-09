@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace ThemePoint\Attributes;
 
 use ThemePoint\Attributes\Interfaces\TypeReaderInterface;
-use ThemePoint\Attributes\TypeReader\ClassTypeReader;
 
 final class Reader
 {
@@ -22,7 +21,10 @@ final class Reader
     public function __construct()
     {
         $this->typeReader = [
-            new ClassTypeReader(),
+            new TypeReader\ClassTypeReader(),
+            new TypeReader\FunctionTypeReader(),
+            new TypeReader\MethodTypeReader(),
+            new TypeReader\PropertyTypeReader(),
         ];
     }
 

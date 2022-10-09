@@ -26,7 +26,7 @@
   },
   "autoload": {
     "psr-4": {
-      "ThemePoint\\Attribute\\": "src/"
+      "ThemePoint\\Attributes\\": "src/"
     }
   },
   "require-dev": {

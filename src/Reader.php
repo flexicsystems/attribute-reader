@@ -10,10 +10,10 @@ declare(strict_types=1);
  * @version 1.0.0
  */
 
-namespace ThemePoint\Attribute;
+namespace ThemePoint\Attributes;
 
-use ThemePoint\Attribute\Interfaces\TypeReaderInterface;
-use ThemePoint\Attribute\TypeReader\ClassTypeReader;
+use ThemePoint\Attributes\Interfaces\TypeReaderInterface;
+use ThemePoint\Attributes\TypeReader\ClassTypeReader;
 
 final class Reader
 {

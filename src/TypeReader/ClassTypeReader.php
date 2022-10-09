@@ -10,9 +10,9 @@ declare(strict_types=1);
  * @version 1.0.0
  */
 
-namespace ThemePoint\Attribute\TypeReader;
+namespace ThemePoint\Attributes\TypeReader;
 
-use ThemePoint\Attribute\Interfaces\TypeReaderInterface;
+use ThemePoint\Attributes\Interfaces\TypeReaderInterface;
 
 final class ClassTypeReader implements TypeReaderInterface
 {
@@ -35,6 +35,18 @@ final class ClassTypeReader implements TypeReaderInterface
 
     public function readAttributes(string|object $input): array
     {
-        // TODO: Implement readAttributes() method.
+        if (\is_string($input)) {
+            $input = new \ReflectionClass($input);
+        }
+
+        if (\is_object($input) && \class_exists($input::class) && \ReflectionClass::class !== $input::class) {
+            $input = new \ReflectionClass($input::class);
+        }
+
+        if ($input::class !== \ReflectionClass::class) {
+            throw new \RuntimeException('Invalid input for class type reader');
+        }
+
+        return $input->getAttributes();
     }
 }

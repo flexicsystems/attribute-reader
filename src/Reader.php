@@ -32,7 +32,7 @@ final class Reader
         $reader = $this->getTypeReader($input);
 
         if (null === $reader) {
-            throw new \RuntimeException('No type reader found for input');
+            throw new \RuntimeException('No type attribute reader found for input');
         }
 
         return $reader->readAttributes($input);

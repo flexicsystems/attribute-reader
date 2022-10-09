@@ -1,4 +1,4 @@
-🕧 Attribute Reader
+📖 Attribute Reader
 ----------------
 
 Reader to get attributes from a class, method or property.

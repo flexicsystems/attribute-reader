@@ -1,0 +1,38 @@
+{
+  "name": "themepoint/attribute-reader",
+  "type": "library",
+  "description": "Provides an reader for php attributes.",
+  "keywords": [
+    "attributes",
+    "reader"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hendrik Legge",
+      "email": "info@themepoint.de",
+      "homepage": "https://themepoint.de"
+    }
+  ],
+  "require": {
+    "php": "^8.1"
+  },
+  "config": {
+    "platform": {
+      "php": "8.1"
+    },
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "ThemePoint\\Attribute\\": "src/"
+    }
+  },
+  "require-dev": {
+    "ergebnis/php-cs-fixer-config": "^4.9.0",
+    "phpstan/phpstan": "^1.8.7",
+    "phpstan/phpstan-deprecation-rules": "^1.0.0",
+    "phpstan/phpstan-strict-rules": "^1.4.4"
+  }
+}

@@ -55,6 +55,21 @@ final class Reader
         return null;
     }
 
+    public function hasAttribute(
+        string|object $input,
+        string $attribute,
+    ): bool {
+        $attributes = $this->getAttributes($input);
+
+        foreach ($attributes as $classAttribute) {
+            if ($classAttribute->getName() === $attribute) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function findClassesWithAttribute(
         string $attribute
     ): array {

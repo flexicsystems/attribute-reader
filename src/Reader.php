@@ -42,17 +42,47 @@ final class Reader
 
     public function getAttribute(
         string|object $input,
-        string $attributeName,
+        string $attribute,
     ): ?\ReflectionAttribute {
         $attributes = $this->getAttributes($input);
 
-        foreach ($attributes as $attribute) {
-            if ($attribute->getName() === $attributeName) {
-                return $attribute;
+        foreach ($attributes as $classAttribute) {
+            if ($classAttribute->getName() === $attribute) {
+                return $classAttribute;
             }
         }
 
         return null;
+    }
+
+    public function hasAttribute(
+        string|object $input,
+        string $attribute,
+    ): bool {
+        $attributes = $this->getAttributes($input);
+
+        foreach ($attributes as $classAttribute) {
+            if ($classAttribute->getName() === $attribute) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function findClassesWithAttribute(
+        string $attribute,
+    ): array {
+        $declaredClasses = \get_declared_classes();
+        $classes = [];
+
+        foreach ($declaredClasses as $class) {
+            if (null !== $this->getAttribute($class, $attribute)) {
+                $classes[] = $class;
+            }
+        }
+
+        return $classes;
     }
 
     private function getTypeReader(string|object $input): ?TypeReaderInterface

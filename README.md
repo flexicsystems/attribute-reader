@@ -24,6 +24,8 @@ $attributeReader = new Flexic\Attributes\Reader();
 
 $attributeReader->getAttributes($reflectionClass); // Returns list of given attributes
 $attributeReader->getAttribute($reflectionClass, MyAttribute::class); // Returns first attribute of given type
+$attributeReader->hasAttribute($reflectionClass, MyAttribute::class); // Checks if attribute is defined on class.
+$attributeReader->findClassesWithAttribute(MyAttribute::class); // Get all classes where Attribute is defined.
 ```
 
 ----

@@ -71,7 +71,7 @@ final class Reader
     }
 
     public function findClassesWithAttribute(
-        string $attribute
+        string $attribute,
     ): array {
         $declaredClasses = \get_declared_classes();
         $classes = [];

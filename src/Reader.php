@@ -40,6 +40,29 @@ final class Reader
         return $reader->readAttributes($input);
     }
 
+    public function getFilteredAttributes(
+        string|object $input,
+        string|array $filter,
+    ): array {
+        $reader = $this->getTypeReader($input);
+
+        if (null === $reader) {
+            throw new \RuntimeException('No type attribute reader found for input');
+        }
+
+        if (\is_string($filter)) {
+            $filter = [$filter];
+        }
+
+        return \array_filter($reader->readAttributes($input), static function (?\ReflectionAttribute $attribute) use ($filter) {
+            if (null === $attribute) {
+                return false;
+            }
+
+            return \in_array($attribute->getName(), $filter, true);
+        });
+    }
+
     public function getAttribute(
         string|object $input,
         string $attribute,
